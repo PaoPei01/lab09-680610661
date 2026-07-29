@@ -1,5 +1,15 @@
 # Lecture 09 - RESTful API (Part 3)
 
+### ข้อมูลนักศึกษา
+
+รหัส นศ.: 680610661
+
+ชื่อ-สกุล: จิรประดิษฐ์ ธนาปัญญาสกุล
+
+Vercel URL: https://lab09-680610661.vercel.app/
+
+---
+
 ### Content
 
 - Current API
@@ -77,12 +87,13 @@ Functions for `read`/`write` JSON file are defined in `src/db/db_transactions.ts
 ### New packages for this lab
 
 ```bash
-pnpm i jsonwebtoken bcrypt dotenv 
+pnpm i jsonwebtoken bcrypt dotenv
 pnpm i -D @types/jsonwebtoken @types/bcrypt
 pnpm i approve-builds
 ```
 
 **Package explanation:**
+
 - `jsonwebtoken` : library used to create, sign, verify, and decode JSON Web Tokens (JWT).
 - `bcrypt` : library for password hashing function designed to be computationally intensive.
 - `dotenv` : library that loads secret settings and keys from a `.env` file into your app, keeping private data from source code.
@@ -207,7 +218,7 @@ const token = jwt.sign(
     role: "ADMIN",
   },
   jwt_secret,
-  { expiresIn: "30m" }
+  { expiresIn: "30m" },
 );
 ```
 
@@ -300,7 +311,7 @@ import { type CustomRequest, type UserPayload } from "../libs/types.ts";
 export const authenticateToken = (
   req: CustomRequest, // using a custom request
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   // 1. check Request if "authorization" header exists
   //    and container "Bearer ...JWT-Token..."
@@ -424,7 +435,7 @@ import { users } from "../db/db.ts";
 export const checkRoleAdmin = (
   req: CustomRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   // 1. get "user payload" and "token" from (custom) request
   const payload = req.user;
@@ -462,7 +473,7 @@ import { users, reset_users } from "../db/db.ts";
 export const checkRoles = (
   req: CustomRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   // 1. get "user payload" and "token" from (custom) request
   const payload = req.user;
@@ -506,7 +517,7 @@ router.get(
         error: err,
       });
     }
-  }
+  },
 );
 ```
 

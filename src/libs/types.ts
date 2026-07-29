@@ -32,7 +32,7 @@ export type { User };
 // JWT Payload interface
 interface UserPayload {
   username: string;
-  studentId?: string;
+  studentId?: string | null;
   role: "STUDENT" | "ADMIN";
 }
 export type { UserPayload };
